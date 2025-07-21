@@ -4,8 +4,9 @@ import re
 import os
 
 # 目标URL列表
-urls = ['https://monitor.gacjie.cn/page/cloudflare/ipv4.html', 
-        'https://ip.164746.xyz'
+urls = ['https://api.uouin.com/cloudflare.html', 
+        'https://ip.164746.xyz',
+        'https://cf.090227.xyz'
         ]
 
 # 正则表达式用于匹配IP地址
@@ -25,9 +26,11 @@ with open('ip.txt', 'w') as file:
         soup = BeautifulSoup(response.text, 'html.parser')
         
         # 根据网站的不同结构找到包含IP地址的元素
-        if url == 'https://monitor.gacjie.cn/page/cloudflare/ipv4.html':
+        if url == 'https://api.uouin.com/cloudflare.html':
             elements = soup.find_all('tr')
         elif url == 'https://ip.164746.xyz':
+            elements = soup.find_all('tr')
+        elif url == 'https://cf.090227.xyz':
             elements = soup.find_all('tr')
         else:
             elements = soup.find_all('li')
